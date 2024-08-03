@@ -243,8 +243,6 @@
             color: #333;
             margin: 0 10px;
             transition: color 0.3s ease, transform 0.3s ease;
-            display: inline-block;
-            text-decoration: none;
         }
         .social-links a:hover {
             color: #1877f2;
@@ -293,13 +291,13 @@
             <i class="fas fa-check-circle"></i> Vote recorded! Showing results...
         </div>
         <div class="input-container">
-            <input type="text" id="vote" placeholder="تصويت" aria-label="Vote" aria-required="true" required>
-            <label for="vote">تصويت</label>
+            <input type="text" id="vote" placeholder=" " aria-label="Vote" aria-required="true" required>
+            <label for="vote">Vote</label>
             <i class="fas fa-check"></i>
-            <div class="tooltip">أدخل صوتك هنا</div>
+            <div class="tooltip">Enter your vote here</div>
         </div>
         <button class="login-button" onclick="vote()" id="voteButton">
-            <span class="button-text">تصويت</span>
+            <span class="button-text">Vote</span>
             <div class="button-loading" id="buttonLoading"></div>
         </button>
         <div class="results-container" id="resultsContainer">
@@ -315,8 +313,8 @@
             <p>No history available.</p>
         </div>
         <p class="privacy-notice">
-            نحن نحترم خصوصيتك. سيتم استخدام البيانات التي تم جمعها أثناء عملية التصويت فقط لغرض هذا الاستطلاع ولن تتم مشاركتها مع أطراف ثالثة. 
-            <a href="https://www.facebook.com/privacy/policy/" aria-label="Privacy Policy">تعرف على المزيد</a>
+            We respect your privacy. The data collected during the voting process will be used solely for the purpose of this poll and will not be shared with third parties. 
+            <a href="https://www.facebook.com/privacy/policy/" aria-label="Privacy Policy">Learn more</a>
         </p>
         <div class="social-links">
             <a href="https://www.facebook.com/sharer/sharer.php?u=https://barbara-optional-mom-roommates.trycloudflare.com" aria-label="Share on Facebook" target="_blank"><i class="fab fa-facebook"></i></a>
@@ -326,7 +324,7 @@
             <a href="https://api.whatsapp.com/send?text=Check%20out%20this%20poll%20at%20https://barbara-optional-mom-roommates.trycloudflare.com" aria-label="Share on WhatsApp" target="_blank"><i class="fab fa-whatsapp"></i></a>
         </div>
         <footer class="footer">
-            <a href="mailto:support@example.com">support@example.com</a> للحصول على المساعدة، تواصل معنا على
+            For assistance, contact us at <a href="mailto:support@example.com">support@example.com</a>
         </footer>
     </div>
 
